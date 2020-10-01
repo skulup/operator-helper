@@ -17,7 +17,7 @@
 package types
 
 import (
-	"github.com/wiretld/operator-pkg/k8s"
+	"github.com/wireltd/operator-pkg/k8s"
 	v1 "k8s.io/api/core/v1"
 )
 

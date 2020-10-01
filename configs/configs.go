@@ -2,8 +2,8 @@ package configs
 
 import (
 	"fmt"
-	"github.com/wiretld/operator-pkg/util"
 	"github.com/go-logr/logr"
+	"github.com/wireltd/operator-pkg/util"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/rest"
 	"log"

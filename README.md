@@ -6,9 +6,9 @@ Common Go helpers used by the different operator implementations
 
 ### Operators using this helper library 
 
-1. [Apache Pulsar Operator](https://github.com/wiretld/pulsar-operator)
+1. [Apache Pulsar Operator](https://github.com/wireltd/pulsar-operator)
 
-2. [Apache Bookkeeper Operator](https://github.com/wiretld/bookkeeper-operator)
+2. [Apache Bookkeeper Operator](https://github.com/wireltd/bookkeeper-operator)
 
 
 ![Utility Icon](utilities.png)

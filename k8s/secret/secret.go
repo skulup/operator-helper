@@ -1,7 +1,7 @@
 package secret
 
 import (
-	"github.com/wiretld/operator-pkg/util"
+	"github.com/wireltd/operator-pkg/util"
 	v12 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
