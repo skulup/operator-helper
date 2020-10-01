@@ -1,14 +1,14 @@
 [![Language](https://img.shields.io/badge/Language-Go-blue)](https://golang.org/)
 
-# operator-pkg
+# operator-helper
 
 Common Go helpers used by the different operator implementations
 
 ### Operators using this helper library 
 
-1. [Apache Pulsar Operator](https://github.com/wireltd/pulsar-operator)
+1. [Apache Pulsar Operator](https://github.com/skulup/pulsar-operator)
 
-2. [Apache Bookkeeper Operator](https://github.com/wireltd/bookkeeper-operator)
+2. [Apache Bookkeeper Operator](https://github.com/skulup/bookkeeper-operator)
 
 
 ![Utility Icon](utilities.png)

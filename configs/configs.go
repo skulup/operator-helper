@@ -3,7 +3,7 @@ package configs
 import (
 	"fmt"
 	"github.com/go-logr/logr"
-	"github.com/wireltd/operator-pkg/util"
+	"github.com/skulup/operator-helper/util"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/rest"
 	"log"

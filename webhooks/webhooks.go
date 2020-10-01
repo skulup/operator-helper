@@ -2,7 +2,7 @@ package webhooks
 
 import (
 	"fmt"
-	"github.com/wireltd/operator-pkg/configs"
+	"github.com/skulup/operator-helper/configs"
 	"k8s.io/apimachinery/pkg/runtime"
 	"log"
 	ctrl "sigs.k8s.io/controller-runtime"

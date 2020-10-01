@@ -2,7 +2,7 @@ package reconcilers
 
 import (
 	"fmt"
-	"github.com/wireltd/operator-pkg/reconciler"
+	"github.com/skulup/operator-helper/reconciler"
 	ctrl "sigs.k8s.io/controller-runtime"
 )
 

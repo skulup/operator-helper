@@ -1,4 +1,4 @@
-module github.com/wireltd/operator-pkg
+module github.com/skulup/operator-helper
 
 go 1.15
 
