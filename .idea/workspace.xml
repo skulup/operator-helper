@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="124e4cb0-c1f2-4966-8a0d-fa656df57fd8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,15 +170,16 @@
     <state width="1876" height="426" key="GridCell.Tab.0.right/0.27.3840.1053@0.27.3840.1053" timestamp="1601483599637" />
     <state width="1876" height="287" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1601120357627" />
     <state width="1876" height="287" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1601103050702" />
-    <state x="100" y="100" width="1720" height="880" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1601038552470">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="2020" y="75" width="1720" height="903" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1601544283679">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="100" y="100" width="1720" height="880" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1601038552470" />
-    <state x="2247" y="269" width="581" height="560" key="find.popup" timestamp="1601536507090">
+    <state x="2020" y="75" width="1720" height="903" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1601544283679" />
+    <state x="2247" y="269" width="581" height="560" key="find.popup" timestamp="1601543528741">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="654" y="289" width="611" height="502" key="find.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1601386131830" />
-    <state x="2247" y="269" width="581" height="560" key="find.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1601536507090" />
+    <state x="2247" y="269" width="581" height="560" key="find.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1601543528741" />
     <state x="2543" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1601400360916">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
