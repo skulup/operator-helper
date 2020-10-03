@@ -20,6 +20,7 @@ var logger logr.Logger
 var loggerOnce sync.Once
 
 var envEnableWebHooks = "ENABLE_WEBHOOKS"
+var envWebHookServiceHosts = "WEBHOOK_SERVICE_HOSTS"
 var envWebHookCertificateDir = "WEBHOOK_CERTIFICATES_DIR"
 var envNamespacesToWatch = "NAMESPACES_TO_WATCH"
 var envEnableLeaderElection = "ENABLE_LEADER_ELECTION"
@@ -74,7 +75,7 @@ func WebHooksEnabled() bool {
 		}
 		log.Printf("The webhook cert directory does not exists: %s", GetWebHookCertDir())
 	}
-	return false
+	return strings.TrimSpace(os.Getenv(envEnableWebHooks)) != "false"
 }
 
 // LeaderElectionNamespace get the leader election namespace
@@ -104,4 +105,8 @@ func NamespacesToWatch() []string {
 func GetWebHookCertDir() string {
 	def := filepath.Join(os.TempDir(), "k8s-webhook-server", "serving-certs")
 	return util.ValueOr(envWebHookCertificateDir, def)
+}
+
+func GetWebHookServiceHosts() string {
+	return util.ValueOr(envWebHookServiceHosts, "localhost,127.0.0.1")
 }
