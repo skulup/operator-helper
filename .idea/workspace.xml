@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e00611b-0509-4411-9793-3aebb37b9728" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/operator-helper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/operator-helper.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/certs/certs.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/configs.go" beforeDir="false" afterPath="$PROJECT_DIR$/configs/configs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webhooks/webhooks.go" beforeDir="false" afterPath="$PROJECT_DIR$/webhooks/webhooks.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

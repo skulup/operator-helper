@@ -106,7 +106,3 @@ func GetWebHookCertDir() string {
 	def := filepath.Join(os.TempDir(), "k8s-webhook-server", "serving-certs")
 	return util.ValueOr(envWebHookCertificateDir, def)
 }
-
-func GetWebHookServiceHosts() string {
-	return util.ValueOr(envWebHookServiceHosts, "localhost,127.0.0.1")
-}
