@@ -20,11 +20,19 @@ var logger logr.Logger
 var loggerOnce sync.Once
 
 var envEnableWebHooks = "ENABLE_WEBHOOKS"
-var envWebHookServiceHosts = "WEBHOOK_SERVICE_HOSTS"
 var envWebHookCertificateDir = "WEBHOOK_CERTIFICATES_DIR"
 var envNamespacesToWatch = "NAMESPACES_TO_WATCH"
 var envEnableLeaderElection = "ENABLE_LEADER_ELECTION"
 var envLeaderElectionNamespace = "LEADER_ELECTION_NAMESPACE"
+
+
+// RequireRootLogger get the root logger or panic if not yet created
+func RequireRootLogger() logr.Logger {
+	if logger == nil {
+		panic("requires GetLogger() to be called first")
+	}
+	return logger
+}
 
 // GetLogger get the logger instance to use
 func GetLogger(operatorName string, opts ...zap.Opts) logr.Logger {
