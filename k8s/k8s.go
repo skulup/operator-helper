@@ -2,6 +2,7 @@ package k8s
 
 // EnvVarPodIP holds the POD's IP
 const EnvVarPodIP = "POD_IP"
+const EnvVarEnvoySidecarStatus = "ENVOY_SIDECAR_STATUS"
 
 const (
 	// LabelAppName defines the app label

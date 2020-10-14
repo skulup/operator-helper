@@ -25,7 +25,6 @@ var envNamespacesToWatch = "NAMESPACES_TO_WATCH"
 var envEnableLeaderElection = "ENABLE_LEADER_ELECTION"
 var envLeaderElectionNamespace = "LEADER_ELECTION_NAMESPACE"
 
-
 // RequireRootLogger get the root logger or panic if not yet created
 func RequireRootLogger() logr.Logger {
 	if logger == nil {

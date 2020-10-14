@@ -17,7 +17,6 @@
 package types
 
 import (
-	"github.com/skulup/operator-helper/k8s"
 	v1 "k8s.io/api/core/v1"
 )
 
@@ -26,28 +25,6 @@ import (
 
 // PodConfig defines the configurations of a kubernetes pod
 type PodConfig struct {
-
-	// Labels defines the labels to attach to the broker pod
-	Labels map[string]string `json:"labels,omitempty"`
-
-	// Annotations defines the annotations to attach to the pod
-	Annotations map[string]string `json:"annotations,omitempty"`
-
-	// Compute Resources required by this container.
-	// This field cannot be updated once the pod is created
-	Resources v1.ResourceRequirements `json:"resources,omitempty"`
-
-	// List of environment variables to set in the container.
-	// This field cannot be updated once the pod is created
-	EnvVar []v1.EnvVar `json:"env,omitempty"`
-
-	// List of sources to populate environment variables in the container.
-	// The keys defined within a source must be a C_IDENTIFIER. All invalid keys
-	// will be reported as an event when the container is starting. When a key exists in multiple
-	// sources, the value associated with the last source will take precedence.
-	// Values defined by an Env with a duplicate key will take precedence.
-	// This field cannot be updated once the pod is created
-	EnvFrom []v1.EnvFromSource `json:"envFrom,omitempty"`
 
 	// Affinity defines the pod's scheduling constraints
 	Affinity v1.Affinity `json:"affinity,omitempty"`
@@ -67,31 +44,14 @@ type PodConfig struct {
 	// Some fields are also present in container.securityContext.  Field values of
 	// container.securityContext take precedence over field values of PodSecurityContext.
 	SecurityContext v1.PodSecurityContext `json:"securityContext,omitempty"`
-}
 
-// GenerateEnvFrom generate the pod environment variables from sources
-func (in *PodConfig) GenerateEnvFrom(sources ...v1.EnvFromSource) []v1.EnvFromSource {
-	envFrom := make([]v1.EnvFromSource, 0)
-	copy(envFrom, sources)
-	if in.EnvFrom != nil {
-		envFrom = append(envFrom, in.EnvFrom...)
-	}
-	return envFrom
-}
+	// Tolerations are attached to tolerates any taint that matches
+	// the triple <key,value,effect> using the matching operator <operator>.
+	Tolerations []v1.Toleration
 
-// GenerateEnvVar generate the pod environment variables
-func (in *PodConfig) GenerateEnvVar(sources ...v1.EnvVar) []v1.EnvVar {
-	envVar := append(make([]v1.EnvVar, 0), sources...)
-	if in.EnvVar != nil {
-		envVar = append(envVar, in.EnvVar...)
-	}
-	envVar = append(envVar, v1.EnvVar{
-		Name: k8s.EnvVarPodIP,
-		ValueFrom: &v1.EnvVarSource{
-			FieldRef: &v1.ObjectFieldSelector{
-				FieldPath: "status.podIP",
-			},
-		},
-	})
-	return envVar
+	// Labels defines the labels to attach to the broker pod
+	Labels map[string]string `json:"labels,omitempty"`
+
+	// Annotations defines the annotations to attach to the pod
+	Annotations map[string]string `json:"annotations,omitempty"`
 }

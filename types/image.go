@@ -35,6 +35,12 @@ type Image struct {
 }
 
 // Name returns the actual docker image name in the format <repository>:<tag>
+// Deprecated. New code should use ToString
 func (in Image) Name() string {
+	return in.ToString()
+}
+
+// ToString returns the actual docker image name in the format <repository>:<tag>
+func (in Image) ToString() string {
 	return fmt.Sprintf("%s:%s", in.Repository, in.Tag)
 }
