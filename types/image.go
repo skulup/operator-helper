@@ -44,3 +44,19 @@ func (in Image) Name() string {
 func (in Image) ToString() string {
 	return fmt.Sprintf("%s:%s", in.Repository, in.Tag)
 }
+
+func (in *Image) SetDefaults(repository, tag string, pullPolicy v1.PullPolicy) (changed bool) {
+	if in.Repository == "" {
+		changed = true
+		in.Repository = repository
+	}
+	if in.Tag == "" {
+		changed = true
+		in.Tag = tag
+	}
+	if in.PullPolicy == "" {
+		changed = true
+		in.PullPolicy = pullPolicy
+	}
+	return
+}
