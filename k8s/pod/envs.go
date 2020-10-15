@@ -1,4 +1,4 @@
-package pods
+package pod
 
 import (
 	"github.com/skulup/operator-helper/k8s"

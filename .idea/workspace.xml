@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6e00611b-0509-4411-9793-3aebb37b9728" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/pods/podspec.go" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/pods/podspec.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/image.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/image.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/annotations/annotations.go" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/annotation/annotation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/pods/anns.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/pods/envs.go" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/pod/envs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/pods/podspec.go" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/pod/spec.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

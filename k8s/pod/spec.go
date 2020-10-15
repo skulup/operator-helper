@@ -1,4 +1,4 @@
-package pods
+package pod
 
 import (
 	"github.com/skulup/operator-helper/types"
@@ -6,7 +6,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-func NewPodSpec(cfg types.PodConfig, volumes []v1.Volume, initContainers []v1.Container, containers []v1.Container) v1.PodSpec {
+func NewSpec(cfg types.PodConfig, volumes []v1.Volume, initContainers []v1.Container, containers []v1.Container) v1.PodSpec {
 	var activeDeadlineSeconds *int64
 	if cfg.ActiveDeadlineSeconds > 0 {
 		activeDeadlineSeconds = &cfg.ActiveDeadlineSeconds
@@ -24,7 +24,7 @@ func NewPodSpec(cfg types.PodConfig, volumes []v1.Volume, initContainers []v1.Co
 	}
 }
 
-func NewPodTemplateSpec(name, generateName string, labels, annotations map[string]string, podSpec v1.PodSpec) v1.PodTemplateSpec {
+func NewTemplateSpec(name, generateName string, labels, annotations map[string]string, podSpec v1.PodSpec) v1.PodTemplateSpec {
 	return v1.PodTemplateSpec{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:         name,
