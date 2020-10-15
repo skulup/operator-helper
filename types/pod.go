@@ -47,7 +47,7 @@ type PodConfig struct {
 
 	// Tolerations are attached to tolerates any taint that matches
 	// the triple <key,value,effect> using the matching operator <operator>.
-	Tolerations []v1.Toleration
+	Tolerations []v1.Toleration `json:"tolerations,omitempty"`
 
 	// Labels defines the labels to attach to the broker pod
 	Labels map[string]string `json:"labels,omitempty"`
