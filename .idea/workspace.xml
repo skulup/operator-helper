@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6e00611b-0509-4411-9793-3aebb37b9728" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/pod.go" beforeDir="false" afterPath="$PROJECT_DIR$/types/pod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reconciler/context.go" beforeDir="false" afterPath="$PROJECT_DIR$/reconciler/context.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +48,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -149,6 +149,10 @@
     </state>
     <state width="1876" height="395" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1601713820076" />
     <state width="1878" height="280" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1602695493975" />
+    <state x="464" y="175" key="SettingsEditor" timestamp="1602905702518">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="464" y="175" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1602905702518" />
     <state x="623" y="280" width="672" height="662" key="search.everywhere.popup" timestamp="1602694833646">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
