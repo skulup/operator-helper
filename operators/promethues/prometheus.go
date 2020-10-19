@@ -24,6 +24,9 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+// +k8s:openapi-gen=true
+// +kubebuilder:object:generate=true
+
 // MetricSpec defines some properties use the create the ServiceMonitorSpec
 // objects if prometheus metrics is supported by the platform
 type MetricSpec struct {
