@@ -30,8 +30,6 @@ import (
 // MetricSpec defines some properties use the create the ServiceMonitorSpec
 // objects if prometheus metrics is supported by the platform
 type MetricSpec struct {
-	// Port defines the name of the service port this endpoint refers to
-	Port string `json:"port,omitempty"`
 	// SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
 	SampleLimit uint64 `json:"sampleLimit,omitempty"`
 	// Timeout after which the scrape is ended
@@ -53,7 +51,7 @@ type MetricSpec struct {
 }
 
 // NewServiceMonitor creates a ServiceMonitor from the MetricSpec
-func (m *MetricSpec) NewServiceMonitor(name, namespace string, labels map[string]string, labelSector metav1.LabelSelector) *v12.ServiceMonitor {
+func (in *MetricSpec) NewServiceMonitor(name, namespace string, labels map[string]string, labelSector metav1.LabelSelector, port string) *v12.ServiceMonitor {
 	return &v12.ServiceMonitor{
 		TypeMeta: metav1.TypeMeta{
 			Kind:       "ServiceMonitor",
@@ -66,18 +64,18 @@ func (m *MetricSpec) NewServiceMonitor(name, namespace string, labels map[string
 		},
 		Spec: v12.ServiceMonitorSpec{
 			Selector:    labelSector,
-			SampleLimit: m.SampleLimit,
+			SampleLimit: in.SampleLimit,
 			Endpoints: []v12.Endpoint{
 				{
-					Port:                 m.Port,
-					Interval:             m.ScrapeInterval,
-					ScrapeTimeout:        m.ScrapeTimeout,
-					TLSConfig:            m.TlsConfig,
-					BearerTokenFile:      m.BearerTokenFile,
-					BearerTokenSecret:    m.BearerTokenSecret,
-					BasicAuth:            m.BasicAuth,
-					MetricRelabelConfigs: m.MetricReLabelings,
-					RelabelConfigs:       m.ReLabelings,
+					Port:                 port,
+					Interval:             in.ScrapeInterval,
+					ScrapeTimeout:        in.ScrapeTimeout,
+					TLSConfig:            in.TlsConfig,
+					BearerTokenFile:      in.BearerTokenFile,
+					BearerTokenSecret:    in.BearerTokenSecret,
+					BasicAuth:            in.BasicAuth,
+					MetricRelabelConfigs: in.MetricReLabelings,
+					RelabelConfigs:       in.ReLabelings,
 				},
 			},
 		},

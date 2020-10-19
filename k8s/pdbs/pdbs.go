@@ -42,7 +42,7 @@ type PodDisruptionBudget struct {
 	MaxUnavailable *intstr.IntOrString `json:"maxUnavailable,omitempty" protobuf:"bytes,3,opt,name=maxUnavailable"`
 }
 
-func (pdb *PodDisruptionBudget) New(name, namespace string, selector metav1.LabelSelector) *v1beta1.PodDisruptionBudget {
+func (in *PodDisruptionBudget) NewPodDisruptionBudget(name, namespace string, selector metav1.LabelSelector) *v1beta1.PodDisruptionBudget {
 	return &v1beta1.PodDisruptionBudget{
 		TypeMeta: metav1.TypeMeta{
 			Kind:       "PodDisruptionBudget",
@@ -53,8 +53,8 @@ func (pdb *PodDisruptionBudget) New(name, namespace string, selector metav1.Labe
 			Namespace: namespace,
 		},
 		Spec: v1beta1.PodDisruptionBudgetSpec{
-			MinAvailable:   pdb.MinAvailable,
-			MaxUnavailable: pdb.MaxUnavailable,
+			MinAvailable:   in.MinAvailable,
+			MaxUnavailable: in.MaxUnavailable,
 			Selector:       &selector,
 		},
 	}
