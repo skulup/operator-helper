@@ -21,19 +21,20 @@ import (
 	"github.com/coreos/prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
 	"github.com/skulup/operator-helper/configs"
 	v13 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // MetricSpec defines some properties use the create the ServiceMonitorSpec
 // objects if prometheus metrics is supported by the platform
 type MetricSpec struct {
+	// Port defines the name of the service port this endpoint refers to
+	Port string `json:"port,omitempty"`
 	// SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
-	SampleLimit *uint64 `json:"sampleLimit,omitempty"`
-	// TargetLimit defines a limit on the number of scraped targets that will be accepted.
-	TargetLimit *uint64 `json:"targetLimit,omitempty"`
+	SampleLimit uint64 `json:"sampleLimit,omitempty"`
 	// Timeout after which the scrape is ended
-	ScrapeTimeout *string `json:"scrapeTimeout,omitempty"`
+	ScrapeTimeout string `json:"scrapeTimeout,omitempty"`
 	// ScrapeInterval defines the interval at which metrics should be scraped
-	ScrapeInterval *string `json:"scrapeInterval,omitempty"`
+	ScrapeInterval string `json:"scrapeInterval,omitempty"`
 	// TlsConfig defines the TLS configuration to use when scraping the endpoint
 	TlsConfig *v12.TLSConfig `json:"tlsConfig,omitempty"`
 	// BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
@@ -46,6 +47,38 @@ type MetricSpec struct {
 	ReLabelings []*v12.RelabelConfig `json:"relabelings,omitempty"`
 	// MetricRelabelConfigs to apply to samples before ingestion.
 	MetricReLabelings []*v12.RelabelConfig `json:"metricRelabelings,omitempty"`
+}
+
+// NewServiceMonitor creates a ServiceMonitor from the MetricSpec
+func (m *MetricSpec) NewServiceMonitor(name, namespace string, labels map[string]string, labelSector metav1.LabelSelector) *v12.ServiceMonitor {
+	return &v12.ServiceMonitor{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       "ServiceMonitor",
+			APIVersion: "monitoring.coreos.com/v1",
+		},
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      name,
+			Namespace: namespace,
+			Labels:    labels,
+		},
+		Spec: v12.ServiceMonitorSpec{
+			Selector:    labelSector,
+			SampleLimit: m.SampleLimit,
+			Endpoints: []v12.Endpoint{
+				{
+					Port:                 m.Port,
+					Interval:             m.ScrapeInterval,
+					ScrapeTimeout:        m.ScrapeTimeout,
+					TLSConfig:            m.TlsConfig,
+					BearerTokenFile:      m.BearerTokenFile,
+					BearerTokenSecret:    m.BearerTokenSecret,
+					BasicAuth:            m.BasicAuth,
+					MetricRelabelConfigs: m.MetricReLabelings,
+					RelabelConfigs:       m.ReLabelings,
+				},
+			},
+		},
+	}
 }
 
 // NewAlertmanagerInterface creates new AlertmanagerInterface
