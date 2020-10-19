@@ -21,12 +21,14 @@ import (
 	"github.com/go-logr/logr"
 	"github.com/skulup/operator-helper/util"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"log"
 	"os"
 	"path/filepath"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/cache"
+	"sigs.k8s.io/controller-runtime/pkg/client/config"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	"strings"
 	"sync"
@@ -61,6 +63,23 @@ func GetLogger(operatorName string, opts ...zap.Opts) logr.Logger {
 	return logger
 }
 
+// NewRestConfig creates new rest config or panic
+func NewRestConfig() *rest.Config {
+	return config.GetConfigOrDie()
+}
+
+// RequireRestClient creates a singleton rest interface
+func RequireRestClient() rest.Interface {
+	return RequireClientset().RESTClient()
+}
+
+// RequireClientset creates a singleton client set
+func RequireClientset() *kubernetes.Clientset {
+	cfg := NewRestConfig()
+	return kubernetes.NewForConfigOrDie(cfg)
+}
+
+
 // GetManagerParams get the manager options to use
 func GetManagerParams(scheme *runtime.Scheme, operatorName, domainName string) (*rest.Config, ctrl.Options) {
 	options := ctrl.Options{
@@ -82,7 +101,7 @@ func GetManagerParams(scheme *runtime.Scheme, operatorName, domainName string) (
 		options.NewCache = cache.MultiNamespacedCacheBuilder(namespaces)
 	}
 	options.CertDir = GetWebHookCertDir()
-	return ctrl.GetConfigOrDie(), options
+	return NewRestConfig(), options
 }
 
 // LeaderElectionEnabled checks if leader election is enabled
