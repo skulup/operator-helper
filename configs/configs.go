@@ -79,7 +79,6 @@ func RequireClientset() *kubernetes.Clientset {
 	return kubernetes.NewForConfigOrDie(cfg)
 }
 
-
 // GetManagerParams get the manager options to use
 func GetManagerParams(scheme *runtime.Scheme, operatorName, domainName string) (*rest.Config, ctrl.Options) {
 	options := ctrl.Options{

@@ -17,9 +17,36 @@
 package promethues
 
 import (
+	v12 "github.com/coreos/prometheus-operator/pkg/apis/monitoring/v1"
 	"github.com/coreos/prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
 	"github.com/skulup/operator-helper/configs"
+	v13 "k8s.io/api/core/v1"
 )
+
+// MetricSpec defines some properties use the create the ServiceMonitorSpec
+// objects if prometheus metrics is supported by the platform
+type MetricSpec struct {
+	// SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
+	SampleLimit *uint64 `json:"sampleLimit,omitempty"`
+	// TargetLimit defines a limit on the number of scraped targets that will be accepted.
+	TargetLimit *uint64 `json:"targetLimit,omitempty"`
+	// Timeout after which the scrape is ended
+	ScrapeTimeout *string `json:"scrapeTimeout,omitempty"`
+	// ScrapeInterval defines the interval at which metrics should be scraped
+	ScrapeInterval *string `json:"scrapeInterval,omitempty"`
+	// TlsConfig defines the TLS configuration to use when scraping the endpoint
+	TlsConfig *v12.TLSConfig `json:"tlsConfig,omitempty"`
+	// BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
+	BasicAuth *v12.BasicAuth `json:"basicAuth,omitempty"`
+	// BearerTokenFile defines the file to read bearer token for scraping targets.
+	BearerTokenFile string `json:"bearerTokenFile,omitempty"`
+	// BearerTokenSecret defines the secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the service monitor and accessible by the Prometheus Operator.
+	BearerTokenSecret v13.SecretKeySelector `json:"bearerTokenSecret,omitempty"`
+	// RelabelConfigs to apply to samples before scraping. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config
+	ReLabelings []*v12.RelabelConfig `json:"relabelings,omitempty"`
+	// MetricRelabelConfigs to apply to samples before ingestion.
+	MetricReLabelings []*v12.RelabelConfig `json:"metricRelabelings,omitempty"`
+}
 
 // NewAlertmanagerInterface creates new AlertmanagerInterface
 func NewAlertmanagerInterface(namespace string) v1.AlertmanagerInterface {
