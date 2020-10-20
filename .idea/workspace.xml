@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6e00611b-0509-4411-9793-3aebb37b9728" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/pdbs/pdbs.go" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/pdbs/pdbs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operators/promethues/prometheus.go" beforeDir="false" afterPath="$PROJECT_DIR$/operators/promethues/prometheus.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reconciler/context.go" beforeDir="false" afterPath="$PROJECT_DIR$/reconciler/context.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reconciler/reconciler.go" beforeDir="false" afterPath="$PROJECT_DIR$/reconciler/reconciler.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

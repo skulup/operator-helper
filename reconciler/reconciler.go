@@ -68,7 +68,7 @@ type Context interface {
 	Logger() logr.Logger
 
 	// Run checks if the reconciliation can be done and call the reconcile function to do so
-	Run(req reconcile.Request, runtimeObject KubeRuntimeObject, reconcile func() error) (reconcile.Result, error)
+	Run(req reconcile.Request, runtimeObject KubeRuntimeObject, reconcile func(deleted bool) error) (reconcile.Result, error)
 
 	// SetOwnershipReference set ownership of the controlled object to the owner
 	SetOwnershipReference(owner metav1.Object, controlled metav1.Object) error

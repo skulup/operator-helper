@@ -80,7 +80,7 @@ func (c *contextImpl) GetResource(key client.ObjectKey, object runtime.Object, f
 	return
 }
 
-func (c *contextImpl) Run(req reconcile.Request, object KubeRuntimeObject, reconcile func() error) (reconcile.Result, error) {
+func (c *contextImpl) Run(req reconcile.Request, object KubeRuntimeObject, reconcile func(deleted bool) error) (reconcile.Result, error) {
 	startTime := time.Now()
 	start(req, c.Logger())
 	defer stop(req, startTime, c.Logger())
@@ -97,6 +97,9 @@ func (c *contextImpl) Run(req reconcile.Request, object KubeRuntimeObject, recon
 		c.Logger().Info("The request object has been scheduled for delete",
 			"Timestamp", time.Until((*delTime).Time).Seconds())
 		// The runtime object is marked for deletion - return but do not requeue
+		if err := reconcile(true); err != nil {
+			return errored(err, req, c.Logger())
+		}
 		return complete(req, c.Logger())
 	}
 
@@ -114,7 +117,7 @@ func (c *contextImpl) Run(req reconcile.Request, object KubeRuntimeObject, recon
 		}
 		return requeue(req, c.Logger())
 	}
-	if err := reconcile(); err != nil {
+	if err := reconcile(false); err != nil {
 		return errored(err, req, c.Logger())
 	}
 	return complete(req, c.Logger())
