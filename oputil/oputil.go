@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package util
+package oputil
 
 import (
 	"crypto/rand"
 	"encoding/base64"
 	"fmt"
+	"gopkg.in/yaml.v2"
 	"log"
 	"math"
 	"os"
@@ -97,4 +98,62 @@ func RandomBytes(len int) ([]byte, error) {
 		return nil, err
 	}
 	return bs, nil
+}
+
+// Contains check if the haystack contains the key
+func Contains(key string, haystack []string) bool {
+	for _, item := range haystack {
+		if key == item {
+			return true
+		}
+	}
+	return false
+}
+
+// Remove returns a slice of haystack with the key removed if present
+// otherwise returns the haystack itself
+func Remove(key string, haystack []string) []string {
+	for i, item := range haystack {
+		if key == item {
+			return append(haystack[:i], haystack[(i+1):]...)
+		}
+	}
+	return haystack
+}
+
+// CreateConfigFromYamlString create a config string from a key-value map updated with the yaml extras excluding exclusions
+func CreateConfigFromYamlString(extras string, name string, keyValues map[string]string, exclusions ...string) (string, map[string]string) {
+	isIncluded := func(needle string) bool {
+		for _, ex := range exclusions {
+			if needle == ex {
+				return false
+			}
+		}
+		return true
+	}
+	if extras != "" {
+		extrasMap := map[string]string{}
+		if err := yaml.Unmarshal([]byte(extras), extrasMap); err != nil {
+			fmt.Println(fmt.Errorf("invalid %s data. reason: %s", name, err))
+		}
+		for k, v := range extrasMap {
+			if !isIncluded(k) {
+				fmt.Printf("The key: %s cannot be set directly to: '%s'. Skipping...", k, name)
+				continue
+			}
+			keyValues[k] = v
+		}
+	}
+	cfg := ""
+	for k, v := range keyValues {
+		if k == "" {
+			fmt.Printf("Invalid key: %s for config: %s", k, name)
+		} else if v != "" {
+			// drop empty value cfg
+			cfg += fmt.Sprintf("%s=%s\n", k, v)
+			continue
+		}
+		delete(keyValues, k)
+	}
+	return cfg, keyValues
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package webhooks
+package webhook
 
 import (
 	"k8s.io/apimachinery/pkg/api/errors"

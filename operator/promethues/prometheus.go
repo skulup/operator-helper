@@ -19,7 +19,7 @@ package promethues
 import (
 	v12 "github.com/coreos/prometheus-operator/pkg/apis/monitoring/v1"
 	"github.com/coreos/prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
-	"github.com/skulup/operator-helper/configs"
+	"github.com/skulup/operator-helper/config"
 	v13 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -109,5 +109,5 @@ func NewThanosRulerInterface(namespace string) v1.ThanosRulerInterface {
 
 // NewMonitoringInterface creates a new MonitoringV1Interface
 func NewMonitoringInterface() v1.MonitoringV1Interface {
-	return v1.New(configs.RequireRestClient())
+	return v1.New(config.RequireRestClient())
 }

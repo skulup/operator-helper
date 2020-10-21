@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package pdbs
+package pdb
 
 import (
 	"k8s.io/api/policy/v1beta1"

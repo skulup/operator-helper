@@ -17,7 +17,7 @@
 package secret
 
 import (
-	"github.com/skulup/operator-helper/util"
+	"github.com/skulup/operator-helper/oputil"
 	v12 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -39,5 +39,5 @@ func New(namespace, name string, data map[string][]byte) *v12.Secret {
 
 // NewPassword creates a new password of length len
 func NewPassword(len int) (string, error) {
-	return util.RandomString(len)
+	return oputil.RandomString(len)
 }

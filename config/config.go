@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package configs
+package config
 
 import (
 	"fmt"
 	"github.com/go-logr/logr"
-	"github.com/skulup/operator-helper/util"
+	"github.com/skulup/operator-helper/oputil"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
@@ -145,5 +145,5 @@ func NamespacesToWatch() []string {
 // GetWebHookCertDir returns the directory of the webhook certificates
 func GetWebHookCertDir() string {
 	def := filepath.Join(os.TempDir(), "k8s-webhook-server", "serving-certs")
-	return util.ValueOr(envWebHookCertificateDir, def)
+	return oputil.ValueOr(envWebHookCertificateDir, def)
 }

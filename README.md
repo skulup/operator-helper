@@ -1,4 +1,5 @@
 [![Language](https://img.shields.io/badge/Language-Go-blue)](https://golang.org/)
+[![Go Report Card](https://goreportcard.com/badge/github.com/skulup/operator-helper)](https://goreportcard.com/report/github.com/skulup/operator-helper)
 
 # operator-helper
 

@@ -17,12 +17,12 @@
 package pod
 
 import (
-	"github.com/skulup/operator-helper/types"
+	"github.com/skulup/operator-helper/basetype"
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-func NewSpec(cfg types.PodConfig, volumes []v1.Volume, initContainers []v1.Container, containers []v1.Container) v1.PodSpec {
+func NewSpec(cfg basetype.PodConfig, volumes []v1.Volume, initContainers []v1.Container, containers []v1.Container) v1.PodSpec {
 	var activeDeadlineSeconds *int64
 	if cfg.ActiveDeadlineSeconds > 0 {
 		activeDeadlineSeconds = &cfg.ActiveDeadlineSeconds

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package types
+package basetype
 
 import (
 	"fmt"
@@ -31,7 +31,7 @@ type Image struct {
 	// The container tag
 	Tag string `json:"tag,omitempty"`
 
-	PullPolicy v1.PullPolicy `json:"imagePullPolicy,omitempty"`
+	PullPolicy v1.PullPolicy `json:"pullPolicy,omitempty"`
 }
 
 // Name returns the actual docker image name in the format <repository>:<tag>

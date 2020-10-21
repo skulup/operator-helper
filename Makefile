@@ -7,9 +7,9 @@ endif
 
 # Generate code
 generate: controller-gen
-	$(CONTROLLER_GEN) object paths="./types/..."
-	$(CONTROLLER_GEN) object paths="./k8s/pdbs/..."
-	$(CONTROLLER_GEN) object paths="./operators/promethues/..."
+	$(CONTROLLER_GEN) object paths="./basetype/..."
+	$(CONTROLLER_GEN) object paths="./k8s/pdb/..."
+	$(CONTROLLER_GEN) object paths="./operator/promethues/..."
 
 
 # find or download controller-gen
